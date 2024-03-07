@@ -1,0 +1,12 @@
+{
+	"name": "stoacc_link_service",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobStorage",
+		"typeProperties": {
+			"serviceEndpoint": "https://copyjobstoracc.blob.core.windows.net/",
+			"accountKind": "StorageV2"
+		}
+	}
+}

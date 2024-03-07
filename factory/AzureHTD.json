@@ -1,0 +1,9 @@
+{
+	"name": "AzureHTD",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "1de703d5-f21a-4d17-b733-666cbb7e3cf8",
+		"tenantId": "b829f6e5-9193-460a-a6f3-56cb70d043f4"
+	}
+}
