@@ -34,7 +34,7 @@
 				}
 			},
 			{
-				"name": "ForEach1",
+				"name": "for_loop_path_dest",
 				"type": "ForEach",
 				"dependsOn": [
 					{
@@ -47,13 +47,57 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('lookup_file').output.pipelineReturnValue",
+						"value": "@activity('lookup_file').output.value",
 						"type": "Expression"
 					},
-					"isSequential": true
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "set_rel_path",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "rel_path",
+								"value": {
+									"value": "@item().sourceRelativeURL",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "set_dest_filename",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "dest_filename",
+								"value": {
+									"value": "@item().sinkFileName",
+									"type": "Expression"
+								}
+							}
+						}
+					]
 				}
 			}
 		],
+		"variables": {
+			"rel_path": {
+				"type": "String"
+			},
+			"dest_filename": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
