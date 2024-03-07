@@ -5,12 +5,21 @@
 			"referenceName": "stoacc_link_service",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"src_filename": {
+				"type": "string",
+				"defaultValue": "population_by_age.tsv.zip"
+			}
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "population_by_age.tsv.zip",
+				"fileName": {
+					"value": "@dataset().src_filename",
+					"type": "Expression"
+				},
 				"container": "src"
 			},
 			"columnDelimiter": "\t",

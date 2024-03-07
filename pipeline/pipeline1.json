@@ -10,7 +10,13 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "stoacc_dataset",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"src_filename": {
+								"value": "@variables('src_filename')",
+								"type": "Expression"
+							}
+						}
 					},
 					"timeout": "0.00:05:00",
 					"sleep": 60
@@ -38,7 +44,13 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "stoacc_dataset",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"src_filename": {
+								"value": "@variables('src_filename')",
+								"type": "Expression"
+							}
+						}
 					},
 					"fieldList": [
 						"columnCount"
@@ -67,7 +79,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@equals(activity('check_number_columns').output.columnCount, 15)",
+						"value": "@equals(activity('check_number_columns').output.columnCount, 13)",
 						"type": "Expression"
 					},
 					"ifTrueActivities": [
@@ -122,13 +134,25 @@
 							"inputs": [
 								{
 									"referenceName": "stoacc_dataset",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"src_filename": {
+											"value": "@variables('src_filename')",
+											"type": "Expression"
+										}
+									}
 								}
 							],
 							"outputs": [
 								{
 									"referenceName": "adls_dataset",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"dest_filename": {
+											"value": "@variables('dest_filename')",
+											"type": "Expression"
+										}
+									}
 								}
 							]
 						}
@@ -136,6 +160,16 @@
 				}
 			}
 		],
+		"variables": {
+			"src_filename": {
+				"type": "String",
+				"defaultValue": "population_by_age.tsv.zip"
+			},
+			"dest_filename": {
+				"type": "String",
+				"defaultValue": "success.tsv"
+			}
+		},
 		"annotations": [],
 		"lastPublishTime": "2024-03-07T00:48:12Z"
 	},
